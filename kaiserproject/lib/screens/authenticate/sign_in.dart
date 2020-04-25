@@ -1,9 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:kaiserproject/start.dart';
-//import 'package:kaiserproject/home.dart';
+import 'package:kaiserproject/screens/home/home.dart';
+import 'package:kaiserproject/screens/authenticate/sign_in.dart';
+import 'package:kaiserproject/screens/authenticate/sign_up.dart';
+import 'package:kaiserproject/services/auth.dart';
+import 'package:kaiserproject/models/user.dart';
+import 'package:kaiserproject/screens/home/start.dart';
+import 'package:kaiserproject/screens/authenticate/authenticate.dart';
+
+class SignIn extends StatefulWidget {
+  @override
+  _SignInState createState() => _SignInState();
+}
+
+class _SignInState extends State<SignIn> {
 
 
-class SignIn extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -16,7 +28,15 @@ class SignIn extends StatelessWidget {
   }
 }
 
-class BaseApp extends StatelessWidget {
+class BaseApp extends StatefulWidget {
+  @override
+  _BaseAppState createState() => _BaseAppState();
+}
+
+class _BaseAppState extends State<BaseApp> {
+
+  final AuthService _auth = AuthService();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,9 +81,9 @@ class BaseApp extends StatelessWidget {
               ),
             ),
             TextFormField(
-//                    decoration: InputDecoration(
-//                        labelText: 'Enter your username'
-//                    ),
+              onChanged: (val) {
+
+              },
             ),
             SizedBox(height:50.0),
             Text(
@@ -75,13 +95,14 @@ class BaseApp extends StatelessWidget {
               ),
             ),
             TextFormField(
-//                    decoration: InputDecoration(
-//                        labelText: 'Enter your username'
-//                    ),
+              obscureText: true,
+              onChanged: (val) {
+
+              },
             ),
 
 
-            SizedBox(height:100.0),
+            SizedBox(height:10.0),
             Center(
               child: MaterialButton(
                   child: Text('Sign In', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0)),
@@ -92,10 +113,39 @@ class BaseApp extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10)
                   ),
                   padding: EdgeInsets.only(top: 30.0, bottom: 30.0, left: 50.0, right: 50.0),
-                  onPressed: () {
+                  onPressed: () async {
+                    //Add normal login (email+pass) here
+                  }
+                  /*onPressed: () {
                     Navigator.pushNamed(context, '/home');
                     //does something
+                  }*/
+              ),
+            ),
+            SizedBox(height:30.0),
+            Center(
+              child: MaterialButton(
+                  child: Text('Sign In Anonymously', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0)),
+                  color: Colors.blue[200],
+                  elevation: 8,
+                  highlightElevation: 2,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)
+                  ),
+                  padding: EdgeInsets.only(top: 30.0, bottom: 30.0, left: 50.0, right: 50.0),
+                  onPressed: () async {
+                    dynamic result = await _auth.signInAnon();
+                    if (result == null) {
+                      print('error signing in');
+                    } else {
+                      print('signed in');
+                      print(result.uid);
+                    }
                   }
+                /*onPressed: () {
+                    Navigator.pushNamed(context, '/home');
+                    //does something
+                  }*/
               ),
             ),
           ],

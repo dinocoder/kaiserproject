@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kaiserproject/start.dart';
+import 'package:kaiserproject/screens/home/start.dart';
 //import 'package:kaiserproject/home.dart';
 
 class SignUp extends StatelessWidget {

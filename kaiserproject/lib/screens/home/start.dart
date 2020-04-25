@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kaiserproject/sign_in.dart';
-import 'package:kaiserproject/sign_up.dart';
+import 'package:kaiserproject/screens/authenticate/sign_in.dart';
+import 'package:kaiserproject/screens/authenticate/sign_up.dart';
 
 
 class Start extends StatelessWidget {
