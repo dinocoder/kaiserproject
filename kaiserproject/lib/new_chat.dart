@@ -1,9 +1,4 @@
 
-import 'dart:ui';
-import 'package:flutter/material.dart';
-import 'package:firstpage/starter.dart';
-import 'package:firstpage/sign_in.dart';
-import 'package:firstpage/sign_up.dart';
 import 'package:flutter/material.dart';
 
 class NewChat extends StatelessWidget {

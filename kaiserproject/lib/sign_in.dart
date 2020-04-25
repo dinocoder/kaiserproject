@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:firstpage/starter.dart';
+import 'package:kaiserproject/start.dart';
+import 'package:kaiserproject/sign_in.dart';
+import 'package:kaiserproject/sign_up.dart';
 
 class SignIn extends StatelessWidget {
   @override
